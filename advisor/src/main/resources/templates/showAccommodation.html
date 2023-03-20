@@ -42,7 +42,8 @@
         <p th:if="${#lists.isEmpty(accommodation.ratings)}">There is not ratings yet.</p>
     </section>
 
-    <section th:if="${accommodation != null && user != null}">
+    <!-- TODO: Part 2 Restrict access to logged in users -->
+    <section th:if="${accommodation != null}">
         <h2>Rate this accommodation</h2>
         <form method="post" th:object="${rating}" th:action="|@{/accommodation}/${accommodationId}/rate|">
             <input type="hidden" th:field="${accommodation.id}">

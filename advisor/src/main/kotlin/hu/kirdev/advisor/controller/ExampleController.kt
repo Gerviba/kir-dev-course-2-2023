@@ -12,7 +12,7 @@ class ExampleController {
 
     @GetMapping("/")
     fun index(model: Model, @AuthenticationPrincipal principal: OAuth2User?): String {
-        if (principal != null) {
+        if (principal != null && principal.attributes.containsKey("profile")) {
             val profileResponse = principal.attributes["profile"] as ProfileResponse
             model.addAttribute("user", profileResponse)
             model.addAttribute("name", "${profileResponse.surname} ${profileResponse.givenName}")

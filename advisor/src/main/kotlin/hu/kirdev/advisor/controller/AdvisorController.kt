@@ -1,6 +1,5 @@
 package hu.kirdev.advisor.controller
 
-import hu.kirdev.advisor.authsch.ProfileResponse
 import hu.kirdev.advisor.model.AccommodationEntity
 import hu.kirdev.advisor.model.RatingEntity
 import hu.kirdev.advisor.service.AdvisorService
@@ -23,7 +22,7 @@ class AdvisorController(
     fun accommodations(model: Model, @AuthenticationPrincipal principal: OAuth2User?): String {
         handlePrincipal(principal, model)
 
-        model.addAttribute("accommodations", advisorService.getAccommodations())
+        // TODO: Part 1: Set the `accommodations` attribute
         return "accommodations"
     }
 
@@ -59,8 +58,7 @@ class AdvisorController(
     ): String {
         handlePrincipal(principal, model)
 
-        model.addAttribute("accommodation", advisorService.getAccommodation(accommodationId).orElse(null))
-        model.addAttribute("rating", RatingEntity())
+        // TODO: Part 1: Set the `accommodation` and the `rating` attributes
         return "showAccommodation"
     }
 
@@ -70,21 +68,16 @@ class AdvisorController(
         @ModelAttribute rating: RatingEntity,
         @AuthenticationPrincipal principal: OAuth2User?
     ): String {
-        if (principal == null)
-            return "redirect:/login/authsch"
-
         rating.id = 0
-        val userProfile = principal.attributes["profile"] as ProfileResponse
-        rating.userId = userProfile.internalId
-        rating.userName = "${userProfile.surname} ${userProfile.givenName}"
+        rating.userId = "todo"
+        rating.userName = "System User"
         advisorService.createRating(accommodationId, rating)
         return "redirect:/accommodation/$accommodationId"
     }
 
     private fun handlePrincipal(principal: OAuth2User?, model: Model) {
         if (principal != null) {
-            val profileResponse = principal.attributes["profile"] as ProfileResponse
-            model.addAttribute("user", profileResponse)
+            // TODO: Part 2: Add a `user` attribute here (type: ProfileResponse)
         }
     }
 

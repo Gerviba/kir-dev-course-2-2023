@@ -35,12 +35,14 @@ class SecurityConfig(
                 "/example/**",
                 "/accommodations",
                 "/accommodation/*",
+
+                "/accommodation",
+                "/accommodation/*/rate",
+
                 "/api/**"
             ).permitAll()
 
             .requestMatchers(
-                "/accommodation",
-                "/accommodation/*/rate",
                 "/user/*",
             ).hasAnyRole("USER", "ADMIN")
 
@@ -80,11 +82,8 @@ class SecurityConfig(
         println(profile)
 
         return DefaultOAuth2User(
-            mutableListOf(SimpleGrantedAuthority("ROLE_USER")),
-            mapOf(
-                "internal_id" to profile.internalId,
-                "profile" to profile
-            ),
+            mutableListOf(),
+            mapOf(),
             "internal_id"
         )
     }

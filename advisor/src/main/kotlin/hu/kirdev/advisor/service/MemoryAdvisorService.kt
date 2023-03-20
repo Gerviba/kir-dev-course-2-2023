@@ -2,9 +2,10 @@ package hu.kirdev.advisor.service
 
 import hu.kirdev.advisor.model.AccommodationEntity
 import hu.kirdev.advisor.model.RatingEntity
+import org.springframework.stereotype.Service
 import java.util.*
 
-//@Service
+@Service
 class MemoryAdvisorService : AdvisorService {
 
     private val accommodations: MutableList<AccommodationEntity> = ArrayList()

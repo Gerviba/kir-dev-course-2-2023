@@ -17,14 +17,12 @@ class ApiController(
 
     @GetMapping("/accommodation/{accommodationId}")
     fun showAccommodation(@PathVariable accommodationId: Long): ResponseEntity<AccommodationEntity> {
-        return advisorService.getAccommodation(accommodationId)
-            .map { ResponseEntity.ok(it) }
-            .orElseGet { ResponseEntity.notFound().build() }
+        return TODO("Get an accommodation by id")
     }
 
     @GetMapping("/rating/user/{userId}")
     fun showRatingsByUser(@PathVariable userId: String): ResponseEntity<List<RatingEntity>> {
-        return ResponseEntity.ok(advisorService.getRatingByUserId(userId))
+        return TODO("Get all the ratings of a user")
     }
 
 }

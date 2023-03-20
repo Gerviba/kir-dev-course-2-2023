@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository
 @Repository
 interface RatingRepo : CrudRepository<RatingEntity, Long> {
 
-    fun findAllByUserId(userId: String): List<RatingEntity>
+    // List<RatingEntity> find all the user by the id of the user
 
 }

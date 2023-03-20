@@ -29,7 +29,9 @@
             </a>
         </div>
     </section>
-    <section class="center" th:if="${user}">
+
+    <!-- TODO: Part 2 Restrict access to logged in users -->
+    <section class="center">
         <a th:href="@{/accommodation}" class="button">CREATE NEW</a>
     </section>
 </main>

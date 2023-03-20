@@ -2,40 +2,29 @@ package hu.kirdev.advisor.service
 
 import hu.kirdev.advisor.model.AccommodationEntity
 import hu.kirdev.advisor.model.RatingEntity
-import hu.kirdev.advisor.repository.AccommodationRepo
-import hu.kirdev.advisor.repository.RatingRepo
-import org.springframework.stereotype.Service
 import java.util.*
 
-@Service
-class DatabaseAdvisorService(
-    private val accommodationRepo: AccommodationRepo,
-    private val ratingRepo: RatingRepo
-) : AdvisorService {
+//@Service
+class DatabaseAdvisorService : AdvisorService {
 
     override fun getAccommodations(): List<AccommodationEntity> {
-        return accommodationRepo.findAll().toList()
+        return TODO("Return all accommodations")
     }
 
     override fun getAccommodation(id: Long): Optional<AccommodationEntity> {
-        return accommodationRepo.findById(id)
+        return TODO("Return an accommodations by id or Optional.empty()")
     }
 
     override fun createAccommodation(accommodation: AccommodationEntity) {
-        accommodationRepo.save(accommodation)
+        TODO("Save the accommodation to the db")
     }
 
     override fun createRating(accommodationId: Long, rating: RatingEntity) {
-        getAccommodation(accommodationId)
-            .ifPresent { accommodation ->
-                rating.accommodation = accommodation
-                ratingRepo.save(rating)
-                accommodationRepo.save(accommodation)
-            }
+        TODO("Create a rating and attach to the given accommodation")
     }
 
     override fun getRatingByUserId(userId: String): List<RatingEntity> {
-        return ratingRepo.findAllByUserId(userId)
+        TODO("Get all ratings by a given user")
     }
 
 }
